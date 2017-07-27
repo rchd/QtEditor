@@ -10,6 +10,9 @@
 #include<QTreeView>
 #include<QListWidget>
 #include<QListWidgetItem>
+#include<QItemSelectionModel>
+
+#include<QDebug>
 
 FileExplorer::FileExplorer(QWidget *parent)
     : QWidget(parent)
@@ -68,7 +71,10 @@ void FileExplorer::createWidget()
 
     getFileInfo();
 }
-
+QListWidgetItem * FileExplorer::currentListWidgetItem()
+{
+        return widget->currentItem();
+}
 
 
 FileExplorer::~FileExplorer()

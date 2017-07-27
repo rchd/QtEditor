@@ -7,6 +7,10 @@
 #include<QFileDialog>
 #include<QIODevice>
 #include<QTextStream>
+#include<QStringList>
+#include<QMessageBox>
+
+#include<iostream>
 
 TextEdit::TextEdit(QWidget *parent)
     : QsciScintilla(parent)
@@ -17,6 +21,8 @@ TextEdit::TextEdit(QWidget *parent)
     createLineNumber();
     createCompletion();
     createFold();
+
+	
 }
 void TextEdit::createFold()
 {
@@ -38,15 +44,23 @@ void TextEdit::createCompletion()
     stlKeywords->load(":/keywords.txt");
     stlKeywords->prepare();
 }
-void TextEdit::open()
+void TextEdit::openFile(const QString &fileName)
 {
-	QString fileName=QFileDialog::getOpenFileName(this,tr("open a file"),tr("select a docuemnt"));
 	QFile file(fileName);
 	file.open(QIODevice::ReadOnly);
 	QTextStream out(&file);
 	this->setText(out.readAll());
 }
 
+void TextEdit::saveFile(const QString &fileName)
+{
+	QFile file(fileName);
+	if(!file.open(QIODevice::WriteOnly))
+		QMessageBox::question(this,tr("Error"),tr("The file has a error,save failed"),
+        QMessageBox::Yes | QMessageBox::No);
+	QTextStream out(&file);
+	out<<text();
+}
 TextEdit::~TextEdit()
 {
 

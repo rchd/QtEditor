@@ -2,22 +2,24 @@
 #define TEXTEDIT_H
 #include <QWidget>
 #include<Qsci/qsciscintilla.h>
-class QsciLexerCPP;
+class QsciLexer;
 
 class  TextEdit
  : public QsciScintilla
 {
-    Q_OBJECT
+    	Q_OBJECT
 public:
     TextEdit(QWidget *parent = 0);
     void createLineNumber();
     void createCompletion();
-    void  createFold();
-    ~TextEdit();
+    void createFold();
+	void getFileName();
+	void openFile(const QString &);
+	void saveFile(const QString &);
+    	~TextEdit();
 private:
-    QsciLexerCPP *lexer;
-public slots:
-	void open();
+    QsciLexer *lexer;
+	QString curFileName;
 };
 
 

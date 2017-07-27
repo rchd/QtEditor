@@ -9,6 +9,7 @@ class QLineEdit;
 class QTreeView;
 class QListWidget;
 class QFileSystemModel;
+class QListWidgetItem;
 
 class FileExplorer : public QWidget
 {
@@ -19,12 +20,14 @@ public:
     void createWidget();
     void getFileInfo();
     void createConnection();
+	QListWidgetItem * currentListWidgetItem();
+    QListWidget *widget;
     ~FileExplorer();
 private:
     QLabel *rootLabel;
     QLineEdit *rootEdit;
     QTreeView *view;
-    QListWidget *widget;
+
     QFileSystemModel *model;
     QCompleter *fileCompleter;
 };
