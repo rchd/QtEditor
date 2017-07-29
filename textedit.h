@@ -13,10 +13,14 @@ public:
     void createLineNumber();
     void createCompletion();
     void createFold();
-	void getFileName();
+	void save();
+	void newFile();
+	void createMarker();
+	QString getFileName();
+	void setFileName(const QString &);
 	void openFile(const QString &);
 	void saveFile(const QString &);
-    	~TextEdit();
+    ~TextEdit();
 private:
     QsciLexer *lexer;
 	QString curFileName;

@@ -8,6 +8,7 @@ class TextEdit;
 class QMenu;
 class QAction;
 class QTabWidget;
+class textBrowser;
 
 class MainWindow :public QMainWindow
 {
@@ -18,18 +19,36 @@ public:
 	void createMenu();
 	void createAction();
 	void createConnection();
+	void createToolBar();
+	void setActionEnabled(bool flag);
+	TextEdit * getCurrentWidget();
+	void setDocumentMapText(const QString &);
 public slots:
 	void openFile();
 	void saveFile();
-	void tabCloseEvent();
+	void saveAllFile();
+	void save();	
+	void closeTab();
 	void listWidgetOpenFile();
+	void closeAllTab();
+	void newFile(const QString &);
+	void undo();
+	void redo();
+	void copy();
+	void paste();
+	void cut();
+
 private:
+	textBrowser * documentMap;
 	FileExplorer *explorer;
 	TextEdit * editor;
 	
 	QTabWidget * CentralTabWidget;
 
+	int tabCount=-1;
+
 	QMenu *fileMenu;
+	QAction *newAction;
 	QAction *openAction;
 	QAction *saveAction;
 	QAction *saveAsAction;
@@ -43,9 +62,20 @@ private:
 	QAction *copyAction;
 	QAction *pasteAction;
 	QAction *undoAction;
-	QAction *reduAction;
+	QAction *redoAction;
 
-	list<TextEdit *> editorList;
+	QMenu *viewMenu;
+	QAction *zoomInAction;
+	QAction *zoomOutAction;
+	QAction *explorerAction;
+	QAction *statusBarAction;
+
+	QMenu *LanguageMenu;
+	QAction *cppAction;
+	QAction *htmlAction;
+	QAction *sqlAction;
+
+	list<TextEdit*> editorList;
 
 	static void printEditorList();
 

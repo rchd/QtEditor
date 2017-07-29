@@ -18,11 +18,13 @@ class FileExplorer : public QWidget
 public:
     FileExplorer(QWidget *parent = 0);
     void createWidget();
-    void getFileInfo();
+    void getFileInfo(const QString &);
     void createConnection();
 	QListWidgetItem * currentListWidgetItem();
     QListWidget *widget;
     ~FileExplorer();
+public slots:
+    void printTreePosition();
 private:
     QLabel *rootLabel;
     QLineEdit *rootEdit;

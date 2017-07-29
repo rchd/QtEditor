@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "qdialog": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "*.tcc": "cpp",
+        "qwidget": "cpp",
+        "qtextbrowser": "cpp"
+    }
+}
