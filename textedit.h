@@ -21,6 +21,8 @@ public:
 	void openFile(const QString &);
 	void saveFile(const QString &);
     ~TextEdit();
+public slots:
+	void sliderChangeValue();
 private:
     QsciLexer *lexer;
 	QString curFileName;

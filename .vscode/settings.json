@@ -6,6 +6,11 @@
         "utility": "cpp",
         "*.tcc": "cpp",
         "qwidget": "cpp",
-        "qtextbrowser": "cpp"
+        "qtextbrowser": "cpp",
+        "qhboxlayout": "cpp",
+        "qstackedlayout": "cpp",
+        "qlabel": "cpp",
+        "qmouseevent": "cpp",
+        "system_error": "cpp"
     }
 }

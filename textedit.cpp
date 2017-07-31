@@ -9,6 +9,9 @@
 #include<QTextStream>
 #include<QStringList>
 #include<QMessageBox>
+#include<QDebug>
+#include<QAbstractSlider>
+#include<QScrollBar>
 
 #include<iostream>
 
@@ -22,8 +25,8 @@ TextEdit::TextEdit(QWidget *parent)
     createCompletion();
     createFold();
     setBraceMatching(QsciScintilla::StrictBraceMatch);
-
-	
+    QScrollBar *scrollbar=this->verticalScrollBar();
+    connect(scrollbar,SIGNAL(valueChanged(int)),this,SLOT(sliderChangeValue()));
 }
 void TextEdit::createMarker()
 {
@@ -65,6 +68,10 @@ void TextEdit::newFile()
 {
     setText("");
 }
+	void TextEdit::sliderChangeValue()
+    {
+            qDebug()<<this->verticalScrollBar()->value();
+    }
 void TextEdit::openFile(const QString &fileName)
 {
 	QFile file(fileName);

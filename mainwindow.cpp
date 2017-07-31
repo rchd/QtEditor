@@ -17,6 +17,7 @@
 #include<QMimeData>
 #include<QClipboard>
 #include<QTextBrowser>
+#include<QScrollBar>
 
 #include<iostream>
 
@@ -228,7 +229,9 @@ void MainWindow::listWidgetOpenFile()
 		statusBar()->showMessage(tr("Ready"));
 		tabCount++;
 		CentralTabWidget->setCurrentIndex(tabCount);
+		documentMap->setEditorScrollBar(editor->verticalScrollBar());
 		setDocumentMapText(editor->text());
+
 	}
 
 
