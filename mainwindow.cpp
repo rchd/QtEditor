@@ -2,6 +2,7 @@
 #include"fileExplorer.h"
 #include"textedit.h"
 #include"documentmap.h"
+#include"finddialog.h"
 
 #include<QApplication>
 #include<QDockWidget>
@@ -18,6 +19,7 @@
 #include<QClipboard>
 #include<QTextBrowser>
 #include<QScrollBar>
+#include<QDialog>
 
 #include<iostream>
 
@@ -60,6 +62,15 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::setDocumentMapText(const QString & text)
 {
 	documentMap->setText(text);
+}
+void MainWindow::replace()
+{
+	findDialog *dialog=new findDialog(this);
+	dialog->show();
+	dialog->raise();
+	dialog->activateWindow();
+	qDebug()<<dialog->getFindText();
+
 }
 void MainWindow::createToolBar()
 {
@@ -119,18 +130,23 @@ void MainWindow::createAction()
 	explorerAction->setCheckable(true);
 	statusBarAction=new QAction(tr("Status Bar"));
 	statusBarAction->setCheckable(true);
+	findAction=new QAction(tr("Find"));
+	replaceAction=new QAction(tr("Rplace"));
 
 	viewMenu->addAction(zoomInAction);
 	viewMenu->addAction(zoomOutAction);
 	viewMenu->addAction(explorerAction);
 	viewMenu->addAction(statusBarAction);
 
-
+	editMenu->addAction(redoAction);
+	editMenu->addAction(undoAction);
+	editMenu->addSeparator();
 	editMenu->addAction(cutAction);
 	editMenu->addAction(copyAction);
 	editMenu->addAction(pasteAction);
-	editMenu->addAction(redoAction);
-	editMenu->addAction(undoAction);
+	editMenu->addSeparator();
+	editMenu->addAction(findAction);
+	editMenu->addAction(replaceAction);
 
 	fileMenu->addAction(newAction);
 	fileMenu->addAction(openAction);
@@ -158,6 +174,7 @@ void MainWindow::createConnection()
 	connect(pasteAction,SIGNAL(triggered()),this,SLOT(paste()));
 	connect(undoAction,SIGNAL(triggered()),this,SLOT(undo()));
 	connect(redoAction,SIGNAL(triggered()),this,SLOT(redo()));
+	connect(replaceAction,SIGNAL(triggered()),this,SLOT(replace()));
 
 	connect(CentralTabWidget,SIGNAL(tabCloseRequested(int)),this,
 	SLOT(closeTab()));

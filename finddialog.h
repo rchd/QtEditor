@@ -1,24 +1,16 @@
 #include<QDialog>
 
-
-class QLabel;
-class QLineEdit;
-class QPushButton;
+namespace Ui {
+    class Dialog;
+}
 class findDialog :public QDialog
 {
     private:
-        QLabel *findLabel;
-        QLineEdit *findLineEdit;
-        QPushButton *findButton;
-        QPushButton *replaceButton;
-        QPushButton *closeButton;
+        Ui::Dialog *findAndReplaceDialog;
 
     public:
+        findDialog(QWidget *parent=0);
+        ~findDialog();
         QString getFindText();
         QString getreplaceText();
-        void createWidget();
-        void createLayout();
-        void createConnection();
-
-
 };

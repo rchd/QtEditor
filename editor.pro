@@ -13,7 +13,8 @@ HEADERS += documentmap.h \
            finddialog.h \
            mainwindow.h \
            rectOfText.h \
-           textedit.h
+           textedit.h \
+           ui_finddialog.h
 SOURCES += documentmap.cpp \
            fileExplorer.cpp \
            finddialog.cpp \

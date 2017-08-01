@@ -37,6 +37,7 @@ public slots:
 	void copy();
 	void paste();
 	void cut();
+	void replace();
 
 private:
 	textBrowser * documentMap;
@@ -63,6 +64,8 @@ private:
 	QAction *pasteAction;
 	QAction *undoAction;
 	QAction *redoAction;
+	QAction *findAction;
+	QAction *replaceAction;
 
 	QMenu *viewMenu;
 	QAction *zoomInAction;
