@@ -3,8 +3,10 @@
 namespace Ui {
     class Dialog;
 }
+class QPushButton;
 class findDialog :public QDialog
 {
+    Q_OBJECT
     private:
         Ui::Dialog *findAndReplaceDialog;
 
@@ -13,4 +15,5 @@ class findDialog :public QDialog
         ~findDialog();
         QString getFindText();
         QString getreplaceText();
+        QPushButton * getFindButton();
 };

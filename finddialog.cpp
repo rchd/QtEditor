@@ -10,6 +10,10 @@ findDialog::findDialog(QWidget *parent)
     connect(findAndReplaceDialog->closeButton,
     SIGNAL(clicked()),this,SLOT(close()));
 }
+QPushButton * findDialog::getFindButton()
+{
+    return findAndReplaceDialog->findButton;
+}
 QString findDialog::getFindText()
 {
     return findAndReplaceDialog->findText->text();

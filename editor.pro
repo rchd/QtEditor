@@ -8,6 +8,7 @@ INCLUDEPATH += .
 QT+=widgets
 CONFIG      += qscintilla2
 # Input
+TRANSLATIONS += zh_CN.ts
 HEADERS += documentmap.h \
            fileExplorer.h \
            finddialog.h \

@@ -21,11 +21,12 @@ public:
     void getFileInfo(const QString &);
     void createConnection();
 	QListWidgetItem * currentListWidgetItem();
-    QListWidget *widget;
+    QListWidget *getListWidget();
     ~FileExplorer();
 public slots:
     void printTreePosition();
 private:
+    QListWidget *widget;
     QLabel *rootLabel;
     QLineEdit *rootEdit;
     QTreeView *view;

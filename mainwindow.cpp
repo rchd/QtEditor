@@ -20,6 +20,7 @@
 #include<QTextBrowser>
 #include<QScrollBar>
 #include<QDialog>
+#include<QSplitter>
 
 #include<iostream>
 
@@ -31,9 +32,10 @@ MainWindow::MainWindow(QWidget *parent)
 	explorer=new FileExplorer;
 	CentralTabWidget=new QTabWidget(this);
 	CentralTabWidget->setTabsClosable(true);
-	setCentralWidget(CentralTabWidget);
-	CentralTabWidget->setTabShape(QTabWidget::Triangular);
+
+	//CentralTabWidget->setTabShape(QTabWidget::Triangular);
 	CentralTabWidget->setMovable(true);
+	tabWidgetList.push_back(CentralTabWidget);
 
 	QDockWidget*rightDockWidget=new QDockWidget;
 	documentMap=new textBrowser;
@@ -45,6 +47,10 @@ MainWindow::MainWindow(QWidget *parent)
 	leftDock->setWindowTitle("Explorer");
 	leftDock->setWidget(explorer);
 	addDockWidget(Qt::LeftDockWidgetArea,leftDock);
+
+	splitter=new QSplitter;
+	splitter->addWidget(CentralTabWidget);
+	setCentralWidget(splitter);
 
 
 	QString fileName="new file";
@@ -59,18 +65,36 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 }
+void MainWindow::newSplitter()
+{
+	CentralTabWidget=new QTabWidget;
+	splitter->addWidget(CentralTabWidget);
+	tabWidgetList.push_back(CentralTabWidget);
+	CentralTabWidget->setTabsClosable(true);
+	CentralTabWidget->setMovable(true);
+	connect(CentralTabWidget,SIGNAL(tabCloseRequested(int)),this,
+	SLOT(closeTab()));
+}
 void MainWindow::setDocumentMapText(const QString & text)
 {
 	documentMap->setText(text);
 }
 void MainWindow::replace()
 {
-	findDialog *dialog=new findDialog(this);
+	dialog=new findDialog(this);
+	//QPushButton *findButton=dialog->getFindButton();
+	//connect(findButton,SIGNAL(clicked()),this,SLOT(findText()));
 	dialog->show();
 	dialog->raise();
 	dialog->activateWindow();
 	qDebug()<<dialog->getFindText();
 
+}
+void MainWindow::findText()
+{
+	TextEdit *a=getCurrentWidget();
+	QString Text=dialog->getFindText();
+	a->findFirstInSelection(Text,false,false,false);
 }
 void MainWindow::createToolBar()
 {
@@ -79,8 +103,14 @@ void MainWindow::createToolBar()
 	fileToolBar->addAction(newAction);
 	fileToolBar->addAction(saveAction);
 	QToolBar *editToolBar=addToolBar(tr("Edit"));
+	editToolBar->addAction(copyAction);
 	editToolBar->addAction(cutAction);
 	editToolBar->addAction(pasteAction);
+	editToolBar->addAction(undoAction);
+	editToolBar->addAction(redoAction);
+	QToolBar *viewToolBar=addToolBar(tr("View"));
+	viewToolBar->addAction(zoomInAction);
+	viewToolBar->addAction(zoomOutAction);
 }
 void MainWindow::newFile(const QString & fileName)
 {
@@ -119,13 +149,14 @@ void MainWindow::createAction()
 
 	cutAction=new QAction(QIcon(":/images/cut.png"),tr("Cut"));
 	//cutAction->setShortCuts(QKeySequence::Cut);
-	copyAction=new QAction(tr("Copy"));
+	copyAction=new QAction(QIcon(":/images/copy.png"),tr("Copy"));
 	pasteAction=new QAction(QIcon(":/images/paste.png"),tr("Paste"));
-	undoAction=new QAction(tr("Undo"));
-	redoAction=new QAction(tr("Redo"));
+	undoAction=new QAction(QIcon(":/images/undo.png"),tr("Undo"));
+	redoAction=new QAction(QIcon(":/images/redo.png"),tr("Redo"));
 
-	zoomInAction=new QAction(tr("Zoom In"));
-	zoomOutAction=new QAction(tr("Zoom Out"));
+	zoomInAction=new QAction(QIcon(":/images/zoomin.png"),tr("Zoom In"));
+	zoomOutAction=new QAction(QIcon(":/images/zoomout.png"),tr("Zoom Out"));
+	splitterAction=new QAction(tr("Splitter Editor"));
 	explorerAction=new QAction(tr("Explorer"));
 	explorerAction->setCheckable(true);
 	statusBarAction=new QAction(tr("Status Bar"));
@@ -135,6 +166,7 @@ void MainWindow::createAction()
 
 	viewMenu->addAction(zoomInAction);
 	viewMenu->addAction(zoomOutAction);
+	viewMenu->addAction(splitterAction);
 	viewMenu->addAction(explorerAction);
 	viewMenu->addAction(statusBarAction);
 
@@ -176,9 +208,14 @@ void MainWindow::createConnection()
 	connect(redoAction,SIGNAL(triggered()),this,SLOT(redo()));
 	connect(replaceAction,SIGNAL(triggered()),this,SLOT(replace()));
 
+	connect(zoomInAction,SIGNAL(triggered()),this,SLOT(zoomIn()));
+	connect(zoomOutAction,SIGNAL(triggered()),this,SLOT(zoomOut()));
+	connect(splitterAction,SIGNAL(triggered()),this,SLOT(newSplitter()));
+
 	connect(CentralTabWidget,SIGNAL(tabCloseRequested(int)),this,
 	SLOT(closeTab()));
-	connect(explorer->widget,SIGNAL(itemDoubleClicked(QListWidgetItem *)),
+	QListWidget *widget=explorer->getListWidget();
+	connect(widget,SIGNAL(itemDoubleClicked(QListWidgetItem *)),
 	this,SLOT(listWidgetOpenFile()));
 }
 void MainWindow::cut()
@@ -189,8 +226,8 @@ void MainWindow::cut()
 }
 TextEdit * MainWindow::getCurrentWidget()
 {
-	QWidget *curTabEditor=CentralTabWidget->currentWidget();
-	TextEdit *a=qobject_cast<TextEdit *>(curTabEditor);
+	QWidget *temp=splitter->focusWidget();
+	TextEdit *a=qobject_cast<TextEdit *>(temp);
 	return a;
 }
 void MainWindow::copy()
@@ -216,11 +253,26 @@ void MainWindow::redo()
 	TextEdit *a=getCurrentWidget();
 	a->redo();
 }
+void MainWindow::zoomIn()
+{
+	TextEdit *a=getCurrentWidget();
+	a->zoomIn();
+}
+void MainWindow::zoomOut()
+{
+	TextEdit *a=getCurrentWidget();
+	a->zoomOut();
+}
 void MainWindow::openFile()
 {
 	QString fileName=QFileDialog::getOpenFileName(this);
 	if(!fileName.isEmpty())
 	{
+		open(fileName);
+	}
+}
+void MainWindow::open(const QString &fileName)
+{
 		tabCount++;
 		editor=new TextEdit;
 		editor->openFile(fileName);
@@ -230,7 +282,6 @@ void MainWindow::openFile()
 		statusBar()->showMessage(tr("Ready"));
 		setActionEnabled(true);
 		CentralTabWidget->setCurrentIndex(tabCount);
-	}
 }
 void MainWindow::listWidgetOpenFile()
 {
@@ -238,19 +289,11 @@ void MainWindow::listWidgetOpenFile()
 	QString fileName=currentItem->text();
 	if(!QFileInfo(fileName).isDir())
 	{
-		editor=new TextEdit;
-		editor->openFile(fileName);
-		editor->setFileName(fileName);
-		CentralTabWidget->addTab(editor,fileName);
-		editorList.push_back(editor);
-		statusBar()->showMessage(tr("Ready"));
-		tabCount++;
-		CentralTabWidget->setCurrentIndex(tabCount);
+		open(fileName);
 		documentMap->setEditorScrollBar(editor->verticalScrollBar());
 		setDocumentMapText(editor->text());
-
+		editor->setCursorPosition(0,0);
 	}
-
 
 }
 void MainWindow::saveAllFile()
@@ -259,8 +302,8 @@ void MainWindow::saveAllFile()
 	list<TextEdit*>::iterator itOfEnd=editorList.end();
 	for(;itOfBegin!=itOfEnd;itOfBegin++)
 	{
-		//QString fileName=itOfBegin->getFileName();
-		//itOfBegin->saveFile(fileName);
+		QString fileName=(*itOfBegin)->getFileName();
+		(*itOfBegin)->saveFile(fileName);
 	}
 }
 void MainWindow::saveFile()
@@ -277,10 +320,19 @@ void MainWindow::save()
 }
 void MainWindow::closeTab()
 {
-	int id=CentralTabWidget->currentIndex();
-	CentralTabWidget->removeTab(id);
-	std::cout<<id;
-	tabCount--;
+	TextEdit * temp=getCurrentWidget();
+	qDebug()<<temp;
+	list<QTabWidget *>::iterator it=tabWidgetList.begin();
+	for(;it!=tabWidgetList.end();it++)
+	{
+		int id=(*it)->indexOf(temp);
+		if(id!=-1){
+			qDebug()<<id;
+			CentralTabWidget=*it;
+			CentralTabWidget->removeTab(id);
+			tabCount--;
+		}
+	}
 	if(tabCount<0)
 		setActionEnabled(false);
 }

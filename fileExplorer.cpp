@@ -91,9 +91,13 @@ void FileExplorer::createWidget()
 
     getFileInfo(QDir::currentPath());
 }
+QListWidget * FileExplorer::getListWidget()
+{
+    return widget;
+}
 QListWidgetItem * FileExplorer::currentListWidgetItem()
 {
-        return widget->currentItem();
+    return widget->currentItem();
 }
 
 

@@ -9,6 +9,8 @@ class QMenu;
 class QAction;
 class QTabWidget;
 class textBrowser;
+class findDialog;
+class QSplitter;
 
 class MainWindow :public QMainWindow
 {
@@ -23,6 +25,7 @@ public:
 	void setActionEnabled(bool flag);
 	TextEdit * getCurrentWidget();
 	void setDocumentMapText(const QString &);
+	void open(const QString &);
 public slots:
 	void openFile();
 	void saveFile();
@@ -38,20 +41,26 @@ public slots:
 	void paste();
 	void cut();
 	void replace();
-
+	void zoomIn();
+	void zoomOut();
+	void findText();
+	void newSplitter();
 private:
 	textBrowser * documentMap;
 	FileExplorer *explorer;
 	TextEdit * editor;
 	
+	QSplitter *splitter;
+
 	QTabWidget * CentralTabWidget;
 
 	int tabCount=-1;
-
+	findDialog *dialog;
 	QMenu *fileMenu;
 	QAction *newAction;
 	QAction *openAction;
 	QAction *saveAction;
+	QAction *saveAllAction;
 	QAction *saveAsAction;
 	QAction *printAction;
 	QAction *closeAction;
@@ -70,6 +79,7 @@ private:
 	QMenu *viewMenu;
 	QAction *zoomInAction;
 	QAction *zoomOutAction;
+	QAction *splitterAction;
 	QAction *explorerAction;
 	QAction *statusBarAction;
 
@@ -79,6 +89,7 @@ private:
 	QAction *sqlAction;
 
 	list<TextEdit*> editorList;
+	list<QTabWidget *> tabWidgetList;
 
 	static void printEditorList();
 
