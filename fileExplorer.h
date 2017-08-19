@@ -25,6 +25,8 @@ public:
     ~FileExplorer();
 public slots:
     void printTreePosition();
+protected:
+    void closeEvent(QCloseEvent *event);
 private:
     QListWidget *widget;
     QLabel *rootLabel;

@@ -11,6 +11,7 @@ class QTabWidget;
 class textBrowser;
 class findDialog;
 class QSplitter;
+class QDockWIdget;
 
 class MainWindow :public QMainWindow
 {
@@ -43,9 +44,12 @@ public slots:
 	void replace();
 	void zoomIn();
 	void zoomOut();
-	void findText();
-	void newSplitter();
+	void showExplorer();
+protected:
+	void closeEvent(QCloseEvent *event);
 private:
+	void writeSettings();
+	void readSettings();
 	textBrowser * documentMap;
 	FileExplorer *explorer;
 	TextEdit * editor;
@@ -53,6 +57,7 @@ private:
 	QSplitter *splitter;
 
 	QTabWidget * CentralTabWidget;
+	QDockWidget *leftDock;
 
 	int tabCount=-1;
 	findDialog *dialog;
@@ -89,8 +94,5 @@ private:
 	QAction *sqlAction;
 
 	list<TextEdit*> editorList;
-	list<QTabWidget *> tabWidgetList;
-
-	static void printEditorList();
 
 };

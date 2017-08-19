@@ -1,19 +1,22 @@
 #include<QDialog>
-
+#include"base.h"
 namespace Ui {
     class Dialog;
 }
+class editorBase;
 class QPushButton;
-class findDialog :public QDialog
+class TextEdit;
+class findDialog :public QDialog,public editorBase
 {
     Q_OBJECT
-    private:
-        Ui::Dialog *findAndReplaceDialog;
-
-    public:
-        findDialog(QWidget *parent=0);
-        ~findDialog();
-        QString getFindText();
-        QString getreplaceText();
-        QPushButton * getFindButton();
+private:
+    Ui::Dialog *findAndReplaceDialog;
+public:
+    findDialog(){}
+    findDialog(QWidget *parent,TextEdit *);
+    ~findDialog();
+    void createConnection();
+public slots:
+    void findText();
+    void replace();  
 };

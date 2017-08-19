@@ -15,12 +15,14 @@ HEADERS += documentmap.h \
            mainwindow.h \
            rectOfText.h \
            textedit.h \
-           ui_finddialog.h
+           ui_finddialog.h\
+           base.h
 SOURCES += documentmap.cpp \
            fileExplorer.cpp \
            finddialog.cpp \
            main.cpp \
            mainwindow.cpp \
            rectOfText.cpp \
-           textedit.cpp
+           textedit.cpp\
+           base.cpp
 RESOURCES += images.qrc keywordscompletion.qrc

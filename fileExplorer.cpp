@@ -49,6 +49,11 @@ void FileExplorer::printTreePosition()
     qDebug()<<filePath;
     getFileInfo(filePath);
 }
+void FileExplorer::closeEvent(QCloseEvent *event)
+{
+    this->hide();
+
+}
 
 void FileExplorer::getFileInfo(const QString & fileName)
 {

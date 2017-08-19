@@ -1,167 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>491</width>
-    <height>237</height>
+    <width>408</width>
+    <height>46</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_6">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetFixedSize</enum>
+   </property>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_5">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QLabel" name="findLabel">
-             <property name="text">
-              <string>Find        </string>
-             </property>
-             <property name="buddy">
-              <cstring>findText</cstring>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="findText">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QLabel" name="replaceLabel">
-             <property name="text">
-              <string>Replace</string>
-             </property>
-             <property name="buddy">
-              <cstring>lineEdit</cstring>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <item>
-            <widget class="QCheckBox" name="matchCaseCheckBox">
-             <property name="text">
-              <string>Match case</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="MatchEntireWordOnlyCheckBox">
-             <property name="text">
-              <string>Match entire word only</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="regularExpressionCheckBox">
-             <property name="text">
-              <string>Regular expresson</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <widget class="QCheckBox" name="searchBackWordsCheckBox">
-             <property name="text">
-              <string>Search backwords</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="warpAroundCheckBox">
-             <property name="text">
-              <string>Wrap around</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-      </layout>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Find</string>
+       </property>
+       <property name="buddy">
+        <cstring>findLineEdit</cstring>
+       </property>
+      </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QPushButton" name="closeButton">
-         <property name="text">
-          <string>Close</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="replaceButton">
-         <property name="text">
-          <string>Replace</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="replaceAllButton">
-         <property name="text">
-          <string>Rplace All</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="findButton">
-         <property name="text">
-          <string>Find</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QLineEdit" name="findLineEdit"/>
      </item>
     </layout>
    </item>
   </layout>
-  <zorder>findLabel</zorder>
-  <zorder>findText</zorder>
-  <zorder>replaceLabel</zorder>
-  <zorder>lineEdit</zorder>
-  <zorder>closeButton</zorder>
-  <zorder>replaceButton</zorder>
-  <zorder>replaceAllButton</zorder>
-  <zorder>findButton</zorder>
-  <zorder>matchCaseCheckBox</zorder>
-  <zorder>searchBackWordsCheckBox</zorder>
-  <zorder>MatchEntireWordOnlyCheckBox</zorder>
-  <zorder>regularExpressionCheckBox</zorder>
-  <zorder>warpAroundCheckBox</zorder>
-  <zorder>lineEdit</zorder>
-  <zorder>lineEdit</zorder>
  </widget>
  <resources/>
  <connections/>

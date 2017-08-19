@@ -5,6 +5,7 @@
 #include"finddialog.h"
 
 #include<QApplication>
+#include<QCloseEvent>
 #include<QDockWidget>
 #include<QMenuBar>
 #include<QMenu>
@@ -21,6 +22,7 @@
 #include<QScrollBar>
 #include<QDialog>
 #include<QSplitter>
+#include<QSettings>
 
 #include<iostream>
 
@@ -29,13 +31,12 @@ MainWindow::MainWindow(QWidget *parent)
 	:QMainWindow(parent)
 {
 
-	explorer=new FileExplorer;
+
 	CentralTabWidget=new QTabWidget(this);
 	CentralTabWidget->setTabsClosable(true);
 
 	//CentralTabWidget->setTabShape(QTabWidget::Triangular);
 	CentralTabWidget->setMovable(true);
-	tabWidgetList.push_back(CentralTabWidget);
 
 	QDockWidget*rightDockWidget=new QDockWidget;
 	documentMap=new textBrowser;
@@ -43,11 +44,12 @@ MainWindow::MainWindow(QWidget *parent)
 	rightDockWidget->setWidget(documentMap);
 	addDockWidget(Qt::RightDockWidgetArea,rightDockWidget);
 
-	QDockWidget *leftDock=new QDockWidget;
+	explorer=new FileExplorer;
+	leftDock=new QDockWidget;
 	leftDock->setWindowTitle("Explorer");
 	leftDock->setWidget(explorer);
-	addDockWidget(Qt::LeftDockWidgetArea,leftDock);
-
+addDockWidget(Qt::LeftDockWidgetArea,leftDock);
+leftDock->hide();
 	splitter=new QSplitter;
 	splitter->addWidget(CentralTabWidget);
 	setCentralWidget(splitter);
@@ -60,12 +62,13 @@ MainWindow::MainWindow(QWidget *parent)
 	createConnection();
 	createToolBar();
 
+	readSettings();
 
 
 
 
 }
-void MainWindow::newSplitter()
+/*void MainWindow::newSplitter()
 {
 	CentralTabWidget=new QTabWidget;
 	splitter->addWidget(CentralTabWidget);
@@ -74,27 +77,23 @@ void MainWindow::newSplitter()
 	CentralTabWidget->setMovable(true);
 	connect(CentralTabWidget,SIGNAL(tabCloseRequested(int)),this,
 	SLOT(closeTab()));
-}
+}*/
 void MainWindow::setDocumentMapText(const QString & text)
 {
 	documentMap->setText(text);
 }
 void MainWindow::replace()
 {
-	dialog=new findDialog(this);
+		TextEdit *a=getCurrentWidget();
+	dialog=new findDialog(this,a);
 	//QPushButton *findButton=dialog->getFindButton();
 	//connect(findButton,SIGNAL(clicked()),this,SLOT(findText()));
+
+	//dialog->setEditor(a);
 	dialog->show();
 	dialog->raise();
 	dialog->activateWindow();
-	qDebug()<<dialog->getFindText();
 
-}
-void MainWindow::findText()
-{
-	TextEdit *a=getCurrentWidget();
-	QString Text=dialog->getFindText();
-	a->findFirstInSelection(Text,false,false,false);
 }
 void MainWindow::createToolBar()
 {
@@ -137,26 +136,51 @@ void MainWindow::createMenu()
 void MainWindow::createAction()
 {
 	newAction=new QAction(QIcon(":/images/new.png"),tr("New"));
+	newAction->setShortcuts(QKeySequence::New);
+	newAction->setStatusTip(tr("Create a new file"));
+
 	openAction=new QAction(QIcon(":/images/open.png"),tr("Open"));
 	openAction->setShortcuts(QKeySequence::Open);
 	openAction->setStatusTip(tr("Open an existing file"));
+
 	saveAction=new QAction(QIcon(":/images/save.png"),tr("Save"));
-	saveAsAction=new QAction(tr("Save as"));
+	saveAction->setShortcuts(QKeySequence::Save);
+	saveAction->setStatusTip(tr("Save the document to disk"));
+
+	saveAsAction=new QAction(tr("Save As"));
+	saveAsAction->setShortcuts(QKeySequence::SaveAs);
+	saveAsAction->setStatusTip(tr("Save the document under a new name"));
+
 	closeAllAction=new QAction(tr("Close All"));
 	closeAction=new QAction(tr("Close"));
 	printAction=new QAction(tr("Print"));
 
 
 	cutAction=new QAction(QIcon(":/images/cut.png"),tr("Cut"));
-	//cutAction->setShortCuts(QKeySequence::Cut);
-	copyAction=new QAction(QIcon(":/images/copy.png"),tr("Copy"));
-	pasteAction=new QAction(QIcon(":/images/paste.png"),tr("Paste"));
-	undoAction=new QAction(QIcon(":/images/undo.png"),tr("Undo"));
-	redoAction=new QAction(QIcon(":/images/redo.png"),tr("Redo"));
+	cutAction->setShortcuts(QKeySequence::Cut);
+	cutAction->setStatusTip(tr("Cut the current selection's contents to the "
+                            "clipboard"));
 
+	copyAction=new QAction(QIcon(":/images/copy.png"),tr("Copy"));
+	copyAction->setShortcuts(QKeySequence::Copy);
+    copyAction->setStatusTip(tr("Copy the current selection's contents to the "
+                             "clipboard"));
+
+	pasteAction=new QAction(QIcon(":/images/paste.png"),tr("Paste"));
+	pasteAction->setShortcuts(QKeySequence::Paste);
+    pasteAction->setStatusTip(tr("Paste the clipboard's contents into the current "
+                              "selection"));
+	undoAction=new QAction(QIcon(":/images/undo.png"),tr("Undo"));
+	undoAction->setShortcuts(QKeySequence::Undo);
+	redoAction=new QAction(QIcon(":/images/redo.png"),tr("Redo"));
+	redoAction->setShortcuts(QKeySequence::Redo);
 	zoomInAction=new QAction(QIcon(":/images/zoomin.png"),tr("Zoom In"));
+	zoomInAction->setShortcuts(QKeySequence::ZoomIn);
 	zoomOutAction=new QAction(QIcon(":/images/zoomout.png"),tr("Zoom Out"));
+	zoomOutAction->setShortcuts(QKeySequence::ZoomOut);
 	splitterAction=new QAction(tr("Splitter Editor"));
+
+
 	explorerAction=new QAction(tr("Explorer"));
 	explorerAction->setCheckable(true);
 	statusBarAction=new QAction(tr("Status Bar"));
@@ -210,7 +234,7 @@ void MainWindow::createConnection()
 
 	connect(zoomInAction,SIGNAL(triggered()),this,SLOT(zoomIn()));
 	connect(zoomOutAction,SIGNAL(triggered()),this,SLOT(zoomOut()));
-	connect(splitterAction,SIGNAL(triggered()),this,SLOT(newSplitter()));
+	connect(explorerAction,SIGNAL(toggled(bool)),this,SLOT(showExplorer()));
 
 	connect(CentralTabWidget,SIGNAL(tabCloseRequested(int)),this,
 	SLOT(closeTab()));
@@ -226,7 +250,7 @@ void MainWindow::cut()
 }
 TextEdit * MainWindow::getCurrentWidget()
 {
-	QWidget *temp=splitter->focusWidget();
+	QWidget *temp=CentralTabWidget->currentWidget();
 	TextEdit *a=qobject_cast<TextEdit *>(temp);
 	return a;
 }
@@ -263,6 +287,15 @@ void MainWindow::zoomOut()
 	TextEdit *a=getCurrentWidget();
 	a->zoomOut();
 }
+void MainWindow::showExplorer()
+{
+	if(explorerAction->isChecked())
+		leftDock->show();
+	else
+		leftDock->hide();
+
+	
+}
 void MainWindow::openFile()
 {
 	QString fileName=QFileDialog::getOpenFileName(this);
@@ -277,11 +310,12 @@ void MainWindow::open(const QString &fileName)
 		editor=new TextEdit;
 		editor->openFile(fileName);
 		editor->setFileName(fileName);
-		CentralTabWidget->addTab(editor,fileName);
+		CentralTabWidget->addTab(editor,QIcon(":/images/new.png"),fileName);
 		editorList.push_back(editor);
 		statusBar()->showMessage(tr("Ready"));
 		setActionEnabled(true);
 		CentralTabWidget->setCurrentIndex(tabCount);
+				setWindowTitle(fileName);
 }
 void MainWindow::listWidgetOpenFile()
 {
@@ -293,6 +327,7 @@ void MainWindow::listWidgetOpenFile()
 		documentMap->setEditorScrollBar(editor->verticalScrollBar());
 		setDocumentMapText(editor->text());
 		editor->setCursorPosition(0,0);
+
 	}
 
 }
@@ -322,19 +357,8 @@ void MainWindow::closeTab()
 {
 	TextEdit * temp=getCurrentWidget();
 	qDebug()<<temp;
-	list<QTabWidget *>::iterator it=tabWidgetList.begin();
-	for(;it!=tabWidgetList.end();it++)
-	{
-		int id=(*it)->indexOf(temp);
-		if(id!=-1){
-			qDebug()<<id;
-			CentralTabWidget=*it;
-			CentralTabWidget->removeTab(id);
-			tabCount--;
-		}
-	}
-	if(tabCount<0)
-		setActionEnabled(false);
+	int id=CentralTabWidget->indexOf(temp);
+	CentralTabWidget->removeTab(id);
 }
 void MainWindow::closeAllTab()
 {
@@ -351,6 +375,25 @@ void MainWindow::setActionEnabled(bool flag)
 		saveAction->setEnabled(flag);
 		closeAllAction->setEnabled(flag);
 		closeAction->setEnabled(flag);
+}
+void MainWindow::readSettings()
+{
+    QSettings settings("Trolltech", "Application Example");
+    QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
+    QSize size = settings.value("size", QSize(400, 400)).toSize();
+    resize(size);
+    move(pos);
+}
+
+void MainWindow::writeSettings()
+{
+    QSettings settings("Trolltech", "Application Example");
+    settings.setValue("pos", pos());
+    settings.setValue("size", size());
+}
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    writeSettings();
 }
 MainWindow::~MainWindow()
 {

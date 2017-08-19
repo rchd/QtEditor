@@ -1,7 +1,8 @@
 #include<QWidget>
 
 class rectOfText;
-class QTextBrowser;
+class QsciScintilla;
+class TextEdit;
 class QScrollBar;
 class textBrowser:public QWidget
 {
@@ -12,7 +13,7 @@ public:
     void setEditorScrollBar(QScrollBar *);
     void setText(const QString &);
 private:
-    QTextBrowser *browser;
+    QsciScintilla *browser;
     rectOfText *rectContainer;
     QScrollBar *editorScrollBar;
 };
