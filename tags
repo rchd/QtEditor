@@ -1,0 +1,244 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AR	Makefile	/^AR            = ar cqs$/;"	m
+CC	Makefile	/^CC            = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)$/;"	m
+CHK_DIR_EXISTS	Makefile	/^CHK_DIR_EXISTS= test -d$/;"	m
+COMPRESS	Makefile	/^COMPRESS      = gzip -9f$/;"	m
+COPY	Makefile	/^COPY          = cp -f$/;"	m
+COPY_DIR	Makefile	/^COPY_DIR      = cp -f -R$/;"	m
+COPY_FILE	Makefile	/^COPY_FILE     = cp -f$/;"	m
+CXX	Makefile	/^CXX           = g++$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS      = -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)$/;"	m
+CentralTabWidget	mainwindow.h	/^	QTabWidget * CentralTabWidget;$/;"	m	class:MainWindow
+DEFINES	Makefile	/^DEFINES       = -DQSCINTILLA_DLL -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB$/;"	m
+DEL_DIR	Makefile	/^DEL_DIR       = rmdir$/;"	m
+DEL_FILE	Makefile	/^DEL_FILE      = rm -f$/;"	m
+DESTDIR	Makefile	/^DESTDIR       = $/;"	m
+DIALOG_H	fileExplorer.h	2;"	d
+DIST	Makefile	/^DIST          = ..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/mkspecs\/features\/spec_pre.prf \\$/;"	m
+DISTDIR	Makefile	/^DISTDIR = \/home\/ren\/Documents\/qt\/editor\/.tmp\/editor1.0.0$/;"	m
+DISTNAME	Makefile	/^DISTNAME      = editor1.0.0$/;"	m
+Dialog	ui_finddialog.h	/^    class Dialog: public Ui_Dialog {};$/;"	c	namespace:Ui
+DocumentInfo	statusbarinfo.h	/^    DocumentInfo(QWidget *parent=0)$/;"	f	class:DocumentInfo
+DocumentInfo	statusbarinfo.h	/^class DocumentInfo :public QWidget$/;"	c
+FileExplorer	fileExplorer.cpp	/^FileExplorer::FileExplorer(QWidget *parent)$/;"	f	class:FileExplorer
+FileExplorer	fileExplorer.h	/^class FileExplorer : public QWidget$/;"	c
+Form	forms/ui_finddialog.h	/^    class Form: public Ui_Form {};$/;"	c	namespace:Ui
+FuncationList	funcationlist.cpp	/^FuncationList::FuncationList(QWidget *parent)$/;"	f	class:FuncationList
+FuncationList	funcationlist.h	/^class FuncationList:public QListWidget$/;"	c
+INCPATH	Makefile	/^INCPATH       = -I. -I. -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/include -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/include\/QtPrintSupport -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/include\/QtWidgets -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/include\/QtGui -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/include\/QtCore -I. -isystem \/usr\/include\/libdrm -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/mkspecs\/linux-g++$/;"	m
+INSTALL_DIR	Makefile	/^INSTALL_DIR   = cp -f -R$/;"	m
+INSTALL_FILE	Makefile	/^INSTALL_FILE  = install -m 644 -p$/;"	m
+INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = install -m 755 -p$/;"	m
+LFLAGS	Makefile	/^LFLAGS        = -Wl,-O1 -Wl,-rpath,\/home\/ren\/Qt5.8.0\/5.8\/gcc_64\/lib$/;"	m
+LIBS	Makefile	/^LIBS          = $(SUBLIBS) -L\/home\/ren\/Qt5.8.0\/5.8\/gcc_64\/lib -lqscintilla2_qt5 -lQt5PrintSupport -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread $/;"	m
+LINK	Makefile	/^LINK          = g++$/;"	m
+LanguageMenu	mainwindow.h	/^	QMenu *LanguageMenu;$/;"	m	class:MainWindow
+MAKEFILE	Makefile	/^MAKEFILE      = Makefile$/;"	m
+MKDIR	Makefile	/^MKDIR         = mkdir -p$/;"	m
+MOVE	Makefile	/^MOVE          = mv -f$/;"	m
+MainWindow	mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent)$/;"	f	class:MainWindow
+MainWindow	mainwindow.h	/^class MainWindow :public QMainWindow$/;"	c
+MatchEntireWordOnlyCheckBox	ui_finddialog.h	/^    QCheckBox *MatchEntireWordOnlyCheckBox;$/;"	m	class:Ui_Dialog
+OBJECTS	Makefile	/^OBJECTS       = documentmap.o \\$/;"	m
+OBJECTS_DIR	Makefile	/^OBJECTS_DIR   = .\/$/;"	m
+QMAKE	Makefile	/^QMAKE         = \/home\/ren\/Qt5.8.0\/5.8\/gcc_64\/bin\/qmake$/;"	m
+QMAKE_TARGET	Makefile	/^QMAKE_TARGET  = editor$/;"	m
+RANLIB	Makefile	/^RANLIB        = $/;"	m
+SED	Makefile	/^SED           = sed$/;"	m
+SOURCES	Makefile	/^SOURCES       = documentmap.cpp \\$/;"	m
+STRIP	Makefile	/^STRIP         = strip$/;"	m
+SYMLINK	Makefile	/^SYMLINK       = ln -f -s$/;"	m
+TAR	Makefile	/^TAR           = tar -cf$/;"	m
+TARGET	Makefile	/^TARGET        = editor$/;"	m
+TEXTEDIT_H	textedit.h	2;"	d
+TabList	tablist.h	/^class TabList :public QWidget$/;"	c
+TextEdit	textedit.cpp	/^TextEdit::TextEdit(QWidget *parent)$/;"	f	class:TextEdit
+TextEdit	textedit.h	/^class  TextEdit$/;"	c
+UI_FINDDIALOG_H	forms/ui_finddialog.h	10;"	d
+UI_FINDDIALOG_H	ui_finddialog.h	10;"	d
+Ui	finddialog.h	/^namespace Ui {$/;"	n
+Ui	forms/ui_finddialog.h	/^namespace Ui {$/;"	n
+Ui	ui_finddialog.h	/^namespace Ui {$/;"	n
+Ui_Dialog	ui_finddialog.h	/^class Ui_Dialog$/;"	c
+Ui_Form	forms/ui_finddialog.h	/^class Ui_Form$/;"	c
+actionContainer	actionmanager.cpp	/^static set<QString,QMenu *> * actionManager::actionContainer=new set<QString ,QMenu *>();$/;"	m	class:actionManager	file:
+actionContainer	actionmanager.h	/^    static set<QString,QMenu *> *actionContainer;$/;"	m	class:actionManager
+actionManager	actionmanager.h	/^class actionManager$/;"	c
+addAction	actionmanager.cpp	/^void actionManager::addAction(QAction *action)$/;"	f	class:actionManager
+addMenu	actionmanager.cpp	/^void actionManager::addMenu(QMenu *)$/;"	f	class:actionManager
+browser	documentmap.h	/^    QsciScintilla *browser;$/;"	m	class:textBrowser
+closeAction	mainwindow.h	/^	QAction *closeAction;$/;"	m	class:MainWindow
+closeAllAction	mainwindow.h	/^	QAction *closeAllAction;$/;"	m	class:MainWindow
+closeAllTab	mainwindow.cpp	/^void MainWindow::closeAllTab()$/;"	f	class:MainWindow
+closeButton	ui_finddialog.h	/^    QPushButton *closeButton;$/;"	m	class:Ui_Dialog
+closeEvent	fileExplorer.cpp	/^void FileExplorer::closeEvent(QCloseEvent *event)$/;"	f	class:FileExplorer
+closeEvent	mainwindow.cpp	/^void MainWindow::closeEvent(QCloseEvent *event)$/;"	f	class:MainWindow
+closeTab	mainwindow.cpp	/^void MainWindow::closeTab()$/;"	f	class:MainWindow
+copy	mainwindow.cpp	/^void MainWindow::copy()$/;"	f	class:MainWindow
+copyAction	mainwindow.h	/^	QAction *copyAction;$/;"	m	class:MainWindow
+cppAction	mainwindow.h	/^	QAction *cppAction;$/;"	m	class:MainWindow
+createAction	mainwindow.cpp	/^void MainWindow::createAction()$/;"	f	class:MainWindow
+createCompletion	textedit.cpp	/^void TextEdit::createCompletion()$/;"	f	class:TextEdit
+createConnection	base.cpp	/^void editorBase::createConnection()$/;"	f	class:editorBase
+createConnection	fileExplorer.cpp	/^void FileExplorer::createConnection()$/;"	f	class:FileExplorer
+createConnection	finddialog.cpp	/^void findDialog::createConnection()$/;"	f	class:findDialog
+createConnection	mainwindow.cpp	/^void MainWindow::createConnection()$/;"	f	class:MainWindow
+createFold	textedit.cpp	/^void TextEdit::createFold()$/;"	f	class:TextEdit
+createLineNumber	textedit.cpp	/^void TextEdit::createLineNumber()$/;"	f	class:TextEdit
+createMarker	textedit.cpp	/^void TextEdit::createMarker()$/;"	f	class:TextEdit
+createMenu	mainwindow.cpp	/^void MainWindow::createMenu()$/;"	f	class:MainWindow
+createToolBar	mainwindow.cpp	/^void MainWindow::createToolBar()$/;"	f	class:MainWindow
+createWidget	fileExplorer.cpp	/^void FileExplorer::createWidget()$/;"	f	class:FileExplorer
+curFileName	textedit.h	/^	QString curFileName;$/;"	m	class:TextEdit
+currentEditor	tablist.h	/^    TextEdit * currentEditor;$/;"	m	class:TabList
+currentListWidgetItem	fileExplorer.cpp	/^QListWidgetItem * FileExplorer::currentListWidgetItem()$/;"	f	class:FileExplorer
+cut	mainwindow.cpp	/^void MainWindow::cut()$/;"	f	class:MainWindow
+cutAction	mainwindow.h	/^	QAction *cutAction;$/;"	m	class:MainWindow
+dialog	mainwindow.h	/^	findDialog *dialog;$/;"	m	class:MainWindow
+documentMap	mainwindow.h	/^	textBrowser * documentMap;$/;"	m	class:MainWindow
+editItem	funcationlist.cpp	/^void FuncationList::editItem()$/;"	f	class:FuncationList
+editMenu	mainwindow.h	/^	QMenu *editMenu;$/;"	m	class:MainWindow
+editor	base.h	/^    TextEdit *editor;$/;"	m	class:editorBase
+editor	mainwindow.h	/^	TextEdit * editor;$/;"	m	class:MainWindow
+editorBase	base.h	/^    editorBase(){editor=0;}$/;"	f	class:editorBase
+editorBase	base.h	/^class editorBase$/;"	c
+editorInfo	base.cpp	/^TextEdit * editorBase::editorInfo()$/;"	f	class:editorBase
+editorList	mainwindow.h	/^	list<TextEdit*> editorList;$/;"	m	class:MainWindow
+editorOfScrollBar	rectOfText.h	/^    QScrollBar *editorOfScrollBar;$/;"	m	class:rectOfText
+editorScrollBar	documentmap.h	/^    QScrollBar *editorScrollBar;$/;"	m	class:textBrowser
+exitAcion	mainwindow.h	/^	QAction *exitAcion;$/;"	m	class:MainWindow
+explorer	mainwindow.h	/^	FileExplorer *explorer;$/;"	m	class:MainWindow
+explorerAction	mainwindow.h	/^	QAction *explorerAction;$/;"	m	class:MainWindow
+fileCompleter	fileExplorer.h	/^    QCompleter *fileCompleter;$/;"	m	class:FileExplorer
+fileMenu	mainwindow.h	/^	QMenu *fileMenu;$/;"	m	class:MainWindow
+findAction	mainwindow.h	/^	QAction *findAction;$/;"	m	class:MainWindow
+findAndReplaceDialog	finddialog.h	/^    Ui::Dialog *findAndReplaceDialog;$/;"	m	class:findDialog
+findButton	ui_finddialog.h	/^    QPushButton *findButton;$/;"	m	class:Ui_Dialog
+findDialog	finddialog.cpp	/^findDialog::findDialog(QWidget *parent,TextEdit *editor)$/;"	f	class:findDialog
+findDialog	finddialog.h	/^    findDialog(){}$/;"	f	class:findDialog
+findDialog	finddialog.h	/^class findDialog :public QDialog,public editorBase$/;"	c
+findLabel	ui_finddialog.h	/^    QLabel *findLabel;$/;"	m	class:Ui_Dialog
+findLineEdit	forms/ui_finddialog.h	/^    QLineEdit *findLineEdit;$/;"	m	class:Ui_Form
+findText	finddialog.cpp	/^void findDialog::findText()$/;"	f	class:findDialog
+findText	ui_finddialog.h	/^    QLineEdit *findText;$/;"	m	class:Ui_Dialog
+getCurrentWidget	mainwindow.cpp	/^TextEdit * MainWindow::getCurrentWidget()$/;"	f	class:MainWindow
+getFileInfo	fileExplorer.cpp	/^void FileExplorer::getFileInfo(const QString & fileName)$/;"	f	class:FileExplorer
+getFileName	textedit.cpp	/^QString TextEdit::getFileName()$/;"	f	class:TextEdit
+getListWidget	fileExplorer.cpp	/^QListWidget * FileExplorer::getListWidget()$/;"	f	class:FileExplorer
+horizontalLayout	forms/ui_finddialog.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_Form
+horizontalLayout	ui_finddialog.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_Dialog
+horizontalLayout_2	ui_finddialog.h	/^    QHBoxLayout *horizontalLayout_2;$/;"	m	class:Ui_Dialog
+horizontalLayout_3	ui_finddialog.h	/^    QHBoxLayout *horizontalLayout_3;$/;"	m	class:Ui_Dialog
+horizontalLayout_4	ui_finddialog.h	/^    QHBoxLayout *horizontalLayout_4;$/;"	m	class:Ui_Dialog
+htmlAction	mainwindow.h	/^	QAction *htmlAction;$/;"	m	class:MainWindow
+label	forms/ui_finddialog.h	/^    QLabel *label;$/;"	m	class:Ui_Form
+leftDock	mainwindow.h	/^	QDockWidget *leftDock;$/;"	m	class:MainWindow
+lexer	textedit.h	/^    QsciLexer *lexer;$/;"	m	class:TextEdit
+lineEdit	ui_finddialog.h	/^    QLineEdit *lineEdit;$/;"	m	class:Ui_Dialog
+listWidgetOpenFile	mainwindow.cpp	/^void MainWindow::listWidgetOpenFile()$/;"	f	class:MainWindow
+main	main.cpp	/^int main(int argc,char * argv[])$/;"	f
+matchCaseCheckBox	ui_finddialog.h	/^    QCheckBox *matchCaseCheckBox;$/;"	m	class:Ui_Dialog
+model	fileExplorer.h	/^    QFileSystemModel *model;$/;"	m	class:FileExplorer
+mouseMoveEvent	rectOfText.cpp	/^void rectOfText::mouseMoveEvent(QMouseEvent *event)$/;"	f	class:rectOfText
+mousePressEvent	rectOfText.cpp	/^void rectOfText::mousePressEvent(QMouseEvent *event)$/;"	f	class:rectOfText
+newAction	mainwindow.h	/^	QAction *newAction;$/;"	m	class:MainWindow
+newFile	mainwindow.cpp	/^void MainWindow::newFile(const QString & fileName)$/;"	f	class:MainWindow
+newFile	textedit.cpp	/^void TextEdit::newFile()$/;"	f	class:TextEdit
+open	mainwindow.cpp	/^void MainWindow::open(const QString &fileName)$/;"	f	class:MainWindow
+openAction	mainwindow.h	/^	QAction *openAction;$/;"	m	class:MainWindow
+openFile	mainwindow.cpp	/^void MainWindow::openFile()$/;"	f	class:MainWindow
+openFile	textedit.cpp	/^void TextEdit::openFile(const QString &fileName)$/;"	f	class:TextEdit
+paste	mainwindow.cpp	/^void MainWindow::paste()$/;"	f	class:MainWindow
+pasteAction	mainwindow.h	/^	QAction *pasteAction;$/;"	m	class:MainWindow
+pos	statusbarinfo.h	/^    QPoint pos;$/;"	m	class:DocumentInfo
+posLabel	statusbarinfo.h	/^    QLabel *posLabel;$/;"	m	class:DocumentInfo
+printAction	mainwindow.h	/^	QAction *printAction;$/;"	m	class:MainWindow
+printFileList	mainwindow.cpp	/^void printFileList()$/;"	f
+printText	print.h	/^class printText:public editorBase$/;"	c
+printTreePosition	fileExplorer.cpp	/^void FileExplorer::printTreePosition()$/;"	f	class:FileExplorer
+printer	print.h	/^        QPrinter *printer;$/;"	m	class:printText
+readSettings	mainwindow.cpp	/^void MainWindow::readSettings()$/;"	f	class:MainWindow
+rect	rectOfText.h	/^    QLabel *rect;$/;"	m	class:rectOfText
+rectContainer	documentmap.h	/^    rectOfText *rectContainer;$/;"	m	class:textBrowser
+rectOfText	rectOfText.cpp	/^rectOfText::rectOfText(QWidget *parent)$/;"	f	class:rectOfText
+rectOfText	rectOfText.h	/^class rectOfText:public QWidget$/;"	c
+redo	mainwindow.cpp	/^void MainWindow::redo()$/;"	f	class:MainWindow
+redoAction	mainwindow.h	/^	QAction *redoAction;$/;"	m	class:MainWindow
+regularExpressionCheckBox	ui_finddialog.h	/^    QCheckBox *regularExpressionCheckBox;$/;"	m	class:Ui_Dialog
+replace	finddialog.cpp	/^void findDialog::replace()$/;"	f	class:findDialog
+replace	mainwindow.cpp	/^void MainWindow::replace()$/;"	f	class:MainWindow
+replaceAction	mainwindow.h	/^	QAction *replaceAction;$/;"	m	class:MainWindow
+replaceAllButton	ui_finddialog.h	/^    QPushButton *replaceAllButton;$/;"	m	class:Ui_Dialog
+replaceButton	ui_finddialog.h	/^    QPushButton *replaceButton;$/;"	m	class:Ui_Dialog
+replaceLabel	ui_finddialog.h	/^    QLabel *replaceLabel;$/;"	m	class:Ui_Dialog
+retranslateUi	forms/ui_finddialog.h	/^    void retranslateUi(QWidget *Form)$/;"	f	class:Ui_Form
+retranslateUi	ui_finddialog.h	/^    void retranslateUi(QDialog *Dialog)$/;"	f	class:Ui_Dialog
+rootEdit	fileExplorer.h	/^    QLineEdit *rootEdit;$/;"	m	class:FileExplorer
+rootLabel	fileExplorer.h	/^    QLabel *rootLabel;$/;"	m	class:FileExplorer
+save	mainwindow.cpp	/^void MainWindow::save()$/;"	f	class:MainWindow
+save	textedit.cpp	/^void TextEdit::save()$/;"	f	class:TextEdit
+saveAction	mainwindow.h	/^	QAction *saveAction;$/;"	m	class:MainWindow
+saveAllAction	mainwindow.h	/^	QAction *saveAllAction;$/;"	m	class:MainWindow
+saveAllFile	mainwindow.cpp	/^void MainWindow::saveAllFile()$/;"	f	class:MainWindow
+saveAsAction	mainwindow.h	/^	QAction *saveAsAction;$/;"	m	class:MainWindow
+saveFile	mainwindow.cpp	/^void MainWindow::saveFile()$/;"	f	class:MainWindow
+saveFile	textedit.cpp	/^void TextEdit::saveFile(const QString &fileName)$/;"	f	class:TextEdit
+searchBackWordsCheckBox	ui_finddialog.h	/^    QCheckBox *searchBackWordsCheckBox;$/;"	m	class:Ui_Dialog
+setActionEnabled	mainwindow.cpp	/^void MainWindow::setActionEnabled(bool flag)$/;"	f	class:MainWindow
+setCursorPos	statusbarinfo.h	/^    void setCursorPos(QPoint point)$/;"	f	class:DocumentInfo
+setDocumentMapText	mainwindow.cpp	/^void MainWindow::setDocumentMapText(const QString & text)$/;"	f	class:MainWindow
+setEditor	base.cpp	/^void editorBase::setEditor(TextEdit *editor)$/;"	f	class:editorBase
+setEditorScrollBar	documentmap.cpp	/^void textBrowser::setEditorScrollBar(QScrollBar *scrollbar)$/;"	f	class:textBrowser
+setEditorScrollBar	rectOfText.cpp	/^void rectOfText::setEditorScrollBar(QScrollBar *scrollBar)$/;"	f	class:rectOfText
+setFileName	textedit.cpp	/^void TextEdit::setFileName(const QString & fileName)$/;"	f	class:TextEdit
+setScrollBar	rectOfText.cpp	/^void rectOfText::setScrollBar(QScrollBar *scrollBar)$/;"	f	class:rectOfText
+setTabWidth	statusbarinfo.h	/^    void setTabWidth(int width)$/;"	f	class:DocumentInfo
+setText	documentmap.cpp	/^void textBrowser::setText(const QString & text)$/;"	f	class:textBrowser
+setupUi	forms/ui_finddialog.h	/^    void setupUi(QWidget *Form)$/;"	f	class:Ui_Form
+setupUi	ui_finddialog.h	/^    void setupUi(QDialog *Dialog)$/;"	f	class:Ui_Dialog
+showExplorer	mainwindow.cpp	/^void MainWindow::showExplorer()$/;"	f	class:MainWindow
+sliderChangeValue	textedit.cpp	/^	void TextEdit::sliderChangeValue()$/;"	f	class:TextEdit
+splitter	mainwindow.h	/^	QSplitter *splitter;$/;"	m	class:MainWindow
+splitterAction	mainwindow.h	/^	QAction *splitterAction;$/;"	m	class:MainWindow
+sqlAction	mainwindow.h	/^	QAction *sqlAction;$/;"	m	class:MainWindow
+statusBarAction	mainwindow.h	/^	QAction *statusBarAction;$/;"	m	class:MainWindow
+tabCount	mainwindow.h	/^	int tabCount=-1;$/;"	m	class:MainWindow
+tabWidget	tablist.h	/^    QTabWidget *tabWidget;$/;"	m	class:TabList
+tabWidth	statusbarinfo.h	/^    int tabWidth;$/;"	m	class:DocumentInfo
+tabWidthLabel	statusbarinfo.h	/^    QLabel *tabWidthLabel;$/;"	m	class:DocumentInfo
+textBrowser	documentmap.cpp	/^textBrowser::textBrowser(QWidget *parent)$/;"	f	class:textBrowser
+textBrowser	documentmap.h	/^class textBrowser:public QWidget$/;"	c
+textBrowserScrollBar	rectOfText.h	/^    QScrollBar *textBrowserScrollBar;$/;"	m	class:rectOfText
+undo	mainwindow.cpp	/^void MainWindow::undo()$/;"	f	class:MainWindow
+undoAction	mainwindow.h	/^	QAction *undoAction;$/;"	m	class:MainWindow
+verticalLayout	forms/ui_finddialog.h	/^    QVBoxLayout *verticalLayout;$/;"	m	class:Ui_Form
+verticalLayout	ui_finddialog.h	/^    QVBoxLayout *verticalLayout;$/;"	m	class:Ui_Dialog
+verticalLayout_2	ui_finddialog.h	/^    QVBoxLayout *verticalLayout_2;$/;"	m	class:Ui_Dialog
+verticalLayout_3	ui_finddialog.h	/^    QVBoxLayout *verticalLayout_3;$/;"	m	class:Ui_Dialog
+verticalLayout_4	ui_finddialog.h	/^    QVBoxLayout *verticalLayout_4;$/;"	m	class:Ui_Dialog
+verticalLayout_5	ui_finddialog.h	/^    QVBoxLayout *verticalLayout_5;$/;"	m	class:Ui_Dialog
+verticalLayout_6	ui_finddialog.h	/^    QVBoxLayout *verticalLayout_6;$/;"	m	class:Ui_Dialog
+view	fileExplorer.h	/^    QTreeView *view;$/;"	m	class:FileExplorer
+viewMenu	mainwindow.h	/^	QMenu *viewMenu;$/;"	m	class:MainWindow
+warpAroundCheckBox	ui_finddialog.h	/^    QCheckBox *warpAroundCheckBox;$/;"	m	class:Ui_Dialog
+widget	fileExplorer.h	/^    QListWidget *widget;$/;"	m	class:FileExplorer
+writeSettings	mainwindow.cpp	/^void MainWindow::writeSettings()$/;"	f	class:MainWindow
+zoomIn	mainwindow.cpp	/^void MainWindow::zoomIn()$/;"	f	class:MainWindow
+zoomInAction	mainwindow.h	/^	QAction *zoomInAction;$/;"	m	class:MainWindow
+zoomOut	mainwindow.cpp	/^void MainWindow::zoomOut()$/;"	f	class:MainWindow
+zoomOutAction	mainwindow.h	/^	QAction *zoomOutAction;$/;"	m	class:MainWindow
+~DocumentInfo	statusbarinfo.h	/^    ~DocumentInfo()$/;"	f	class:DocumentInfo
+~FileExplorer	fileExplorer.cpp	/^FileExplorer::~FileExplorer()$/;"	f	class:FileExplorer
+~FuncationList	funcationlist.cpp	/^FuncationList::~FuncationList()$/;"	f	class:FuncationList
+~MainWindow	mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow
+~TextEdit	textedit.cpp	/^TextEdit::~TextEdit()$/;"	f	class:TextEdit
+~editorBase	base.cpp	/^editorBase::~editorBase()$/;"	f	class:editorBase
+~findDialog	finddialog.cpp	/^findDialog::~findDialog()$/;"	f	class:findDialog
+~rectOfText	rectOfText.cpp	/^rectOfText::~rectOfText()$/;"	f	class:rectOfText
+~textBrowser	documentmap.cpp	/^textBrowser::~textBrowser()$/;"	f	class:textBrowser

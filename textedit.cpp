@@ -70,14 +70,17 @@ void TextEdit::newFile()
 }
 	void TextEdit::sliderChangeValue()
     {
-            qDebug()<<this->verticalScrollBar()->value();
+            //qDebug()<<this->verticalScrollBar()->value();
     }
 void TextEdit::openFile(const QString &fileName)
 {
 	QFile file(fileName);
 	file.open(QIODevice::ReadOnly);
 	QTextStream out(&file);
-	this->setText(out.readAll());
+    this->setText(out.readAll());
+
+    int a=0,b=length();
+        qDebug()<<apiContext(50,a,b);
 }
 void TextEdit::save()
 {

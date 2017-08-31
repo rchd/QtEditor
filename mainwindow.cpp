@@ -3,6 +3,8 @@
 #include"textedit.h"
 #include"documentmap.h"
 #include"finddialog.h"
+#include"statusbarinfo.h"
+#include"funcationlist.h"
 
 #include<QApplication>
 #include<QCloseEvent>
@@ -23,6 +25,7 @@
 #include<QDialog>
 #include<QSplitter>
 #include<QSettings>
+#include<QLabel>
 
 #include<iostream>
 
@@ -54,6 +57,11 @@ leftDock->hide();
 	splitter->addWidget(CentralTabWidget);
 	setCentralWidget(splitter);
 
+	FuncationList *funcation=new FuncationList();
+	QDockWidget *funcationDock=new QDockWidget();
+	funcationDock->setWidget(funcation);
+	funcationDock->setWindowTitle("Funcation List");
+	addDockWidget(Qt::RightDockWidgetArea,funcationDock);
 
 	QString fileName="new file";
 	newFile(fileName);
@@ -64,8 +72,8 @@ leftDock->hide();
 
 	readSettings();
 
-
-
+	//DocumentInfo *a=new DocumentInfo();
+	//statusBar()->addPermanentWidget(a);
 
 }
 /*void MainWindow::newSplitter()

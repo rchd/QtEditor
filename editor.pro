@@ -16,7 +16,9 @@ HEADERS += documentmap.h \
            rectOfText.h \
            textedit.h \
            ui_finddialog.h\
-           base.h
+           base.h \
+           statusbarinfo.h \
+           funcationlist.h
 SOURCES += documentmap.cpp \
            fileExplorer.cpp \
            finddialog.cpp \
@@ -24,5 +26,6 @@ SOURCES += documentmap.cpp \
            mainwindow.cpp \
            rectOfText.cpp \
            textedit.cpp\
-           base.cpp
+           base.cpp \
+           funcationlist.cpp
 RESOURCES += images.qrc keywordscompletion.qrc
