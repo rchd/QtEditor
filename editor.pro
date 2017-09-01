@@ -7,6 +7,7 @@ TARGET = editor
 INCLUDEPATH += .
 QT+=widgets
 CONFIG      += qscintilla2
+LIBS+=-L /usr/local/lib  -lqtermwidget5
 # Input
 TRANSLATIONS += zh_CN.ts
 HEADERS += documentmap.h \

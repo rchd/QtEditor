@@ -27,6 +27,8 @@
 #include<QSettings>
 #include<QLabel>
 
+#include<qtermwidget5/qtermwidget.h>
+
 #include<iostream>
 
 
@@ -62,6 +64,12 @@ leftDock->hide();
 	funcationDock->setWidget(funcation);
 	funcationDock->setWindowTitle("Funcation List");
 	addDockWidget(Qt::RightDockWidgetArea,funcationDock);
+
+	QDockWidget *consoleWidget=new QDockWidget();
+	QTermWidget* console=new QTermWidget();
+	consoleWidget->setWidget(console);
+	addDockWidget(Qt::BottomDockWidgetArea,consoleWidget);
+	
 
 	QString fileName="new file";
 	newFile(fileName);
