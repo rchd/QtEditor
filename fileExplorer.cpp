@@ -8,13 +8,13 @@
 #include<QVBoxLayout>
 #include<QHBoxLayout>
 #include<QTreeView>
-#include<QListWidget>
+#include<QListView>
 #include<QListWidgetItem>
 #include<QItemSelectionModel>
 #include<QIcon>
 #include<QFileIconProvider>
-//agverbgvhrxsbrtfghnxdydkajfivdvnfuiogjnbhgkhaigbjmittttttthkgnlkllgb,flblg
 #include<QDebug>
+#include<QModelIndex>
 
 FileExplorer::FileExplorer(QWidget *parent)
     : QWidget(parent)
@@ -57,23 +57,8 @@ void FileExplorer::closeEvent(QCloseEvent *event)
 
 void FileExplorer::getFileInfo(const QString & fileName)
 {
-    widget->clear();
-    QDir dir;
-    dir.setCurrent(fileName);
-    QFileInfoList list=dir.entryInfoList();
-    QIcon folderIcon,icon,fileIcon;
-    QFileIconProvider iconProvider;
-    fileIcon=iconProvider.icon(QFileIconProvider::File);
-    folderIcon=iconProvider.icon(QFileIconProvider::Folder);
-    for(int i=2;i<list.size();i++)
-    {
-        QFileInfo info=list.at(i);
-        QString fileName=info.fileName();
-        if(info.isDir())
-            icon=folderIcon;
-        widget->addItem(new QListWidgetItem(icon,fileName));
-        icon=fileIcon;
-    }
+    widget->setModel(model);
+    widget->setRootIndex(view->currentIndex());
     rootEdit->setText(fileName);
 }
 
@@ -92,17 +77,17 @@ void FileExplorer::createWidget()
     view=new QTreeView;
     view->setModel(model);
 
-    widget=new QListWidget;
+    widget=new QListView;
 
     getFileInfo(QDir::currentPath());
 }
-QListWidget * FileExplorer::getListWidget()
+QListView * FileExplorer::getListWidget()
 {
     return widget;
 }
-QListWidgetItem * FileExplorer::currentListWidgetItem()
+QString  FileExplorer::currentListWidgetItem()
 {
-    return widget->currentItem();
+    return model->fileName(widget->currentIndex());
 }
 
 

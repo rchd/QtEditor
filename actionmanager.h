@@ -3,11 +3,13 @@
 #include<set>
 using std::set;
 class QMenu;
-class actionManager
+class ActionManager
 {
-public:
-    static set<QString,QMenu *> *actionContainer;
 
+    static set<QString,QMenu *> actionContainer;
+public:
     void addAction(QAction *);
     void addMenu(QMenu *);
+    ActionManager();
+    ~ActionManager();
 };

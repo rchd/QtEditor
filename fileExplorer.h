@@ -1,5 +1,5 @@
-#ifndef DIALOG_H
-#define DIALOG_H
+#ifndef FILEEXPLORER_H
+#define FILEEXPLORER_H
 
 #include <QWidget>
 
@@ -7,28 +7,28 @@ class QCompleter;
 class QLabel;
 class QLineEdit;
 class QTreeView;
-class QListWidget;
+class QListView;
 class QFileSystemModel;
 class QListWidgetItem;
+class QModelIndex;
 
 class FileExplorer : public QWidget
 {
     Q_OBJECT
-
 public:
     FileExplorer(QWidget *parent = 0);
     void createWidget();
     void getFileInfo(const QString &);
     void createConnection();
-	QListWidgetItem * currentListWidgetItem();
-    QListWidget *getListWidget();
+    QString currentListWidgetItem();
+    QListView *getListWidget();
     ~FileExplorer();
 public slots:
     void printTreePosition();
 protected:
     void closeEvent(QCloseEvent *event);
 private:
-    QListWidget *widget;
+    QListView *widget;
     QLabel *rootLabel;
     QLineEdit *rootEdit;
     QTreeView *view;

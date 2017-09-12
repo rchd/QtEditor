@@ -11,6 +11,7 @@ public:
     textBrowser(QWidget *parent=0);
     ~textBrowser();
     void setEditorScrollBar(QScrollBar *);
+public slots:
     void setText(const QString &);
 private:
     QsciScintilla *browser;

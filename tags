@@ -4,25 +4,8 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-AR	Makefile	/^AR            = ar cqs$/;"	m
-CC	Makefile	/^CC            = gcc$/;"	m
-CFLAGS	Makefile	/^CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)$/;"	m
-CHK_DIR_EXISTS	Makefile	/^CHK_DIR_EXISTS= test -d$/;"	m
-COMPRESS	Makefile	/^COMPRESS      = gzip -9f$/;"	m
-COPY	Makefile	/^COPY          = cp -f$/;"	m
-COPY_DIR	Makefile	/^COPY_DIR      = cp -f -R$/;"	m
-COPY_FILE	Makefile	/^COPY_FILE     = cp -f$/;"	m
-CXX	Makefile	/^CXX           = g++$/;"	m
-CXXFLAGS	Makefile	/^CXXFLAGS      = -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)$/;"	m
 CentralTabWidget	mainwindow.h	/^	QTabWidget * CentralTabWidget;$/;"	m	class:MainWindow
-DEFINES	Makefile	/^DEFINES       = -DQSCINTILLA_DLL -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB$/;"	m
-DEL_DIR	Makefile	/^DEL_DIR       = rmdir$/;"	m
-DEL_FILE	Makefile	/^DEL_FILE      = rm -f$/;"	m
-DESTDIR	Makefile	/^DESTDIR       = $/;"	m
 DIALOG_H	fileExplorer.h	2;"	d
-DIST	Makefile	/^DIST          = ..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/mkspecs\/features\/spec_pre.prf \\$/;"	m
-DISTDIR	Makefile	/^DISTDIR = \/home\/ren\/Documents\/qt\/editor\/.tmp\/editor1.0.0$/;"	m
-DISTNAME	Makefile	/^DISTNAME      = editor1.0.0$/;"	m
 Dialog	ui_finddialog.h	/^    class Dialog: public Ui_Dialog {};$/;"	c	namespace:Ui
 DocumentInfo	statusbarinfo.h	/^    DocumentInfo(QWidget *parent=0)$/;"	f	class:DocumentInfo
 DocumentInfo	statusbarinfo.h	/^class DocumentInfo :public QWidget$/;"	c
@@ -31,31 +14,10 @@ FileExplorer	fileExplorer.h	/^class FileExplorer : public QWidget$/;"	c
 Form	forms/ui_finddialog.h	/^    class Form: public Ui_Form {};$/;"	c	namespace:Ui
 FuncationList	funcationlist.cpp	/^FuncationList::FuncationList(QWidget *parent)$/;"	f	class:FuncationList
 FuncationList	funcationlist.h	/^class FuncationList:public QListWidget$/;"	c
-INCPATH	Makefile	/^INCPATH       = -I. -I. -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/include -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/include\/QtPrintSupport -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/include\/QtWidgets -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/include\/QtGui -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/include\/QtCore -I. -isystem \/usr\/include\/libdrm -I..\/..\/..\/Qt5.8.0\/5.8\/gcc_64\/mkspecs\/linux-g++$/;"	m
-INSTALL_DIR	Makefile	/^INSTALL_DIR   = cp -f -R$/;"	m
-INSTALL_FILE	Makefile	/^INSTALL_FILE  = install -m 644 -p$/;"	m
-INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = install -m 755 -p$/;"	m
-LFLAGS	Makefile	/^LFLAGS        = -Wl,-O1 -Wl,-rpath,\/home\/ren\/Qt5.8.0\/5.8\/gcc_64\/lib$/;"	m
-LIBS	Makefile	/^LIBS          = $(SUBLIBS) -L\/home\/ren\/Qt5.8.0\/5.8\/gcc_64\/lib -lqscintilla2_qt5 -lQt5PrintSupport -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread $/;"	m
-LINK	Makefile	/^LINK          = g++$/;"	m
 LanguageMenu	mainwindow.h	/^	QMenu *LanguageMenu;$/;"	m	class:MainWindow
-MAKEFILE	Makefile	/^MAKEFILE      = Makefile$/;"	m
-MKDIR	Makefile	/^MKDIR         = mkdir -p$/;"	m
-MOVE	Makefile	/^MOVE          = mv -f$/;"	m
 MainWindow	mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent)$/;"	f	class:MainWindow
 MainWindow	mainwindow.h	/^class MainWindow :public QMainWindow$/;"	c
 MatchEntireWordOnlyCheckBox	ui_finddialog.h	/^    QCheckBox *MatchEntireWordOnlyCheckBox;$/;"	m	class:Ui_Dialog
-OBJECTS	Makefile	/^OBJECTS       = documentmap.o \\$/;"	m
-OBJECTS_DIR	Makefile	/^OBJECTS_DIR   = .\/$/;"	m
-QMAKE	Makefile	/^QMAKE         = \/home\/ren\/Qt5.8.0\/5.8\/gcc_64\/bin\/qmake$/;"	m
-QMAKE_TARGET	Makefile	/^QMAKE_TARGET  = editor$/;"	m
-RANLIB	Makefile	/^RANLIB        = $/;"	m
-SED	Makefile	/^SED           = sed$/;"	m
-SOURCES	Makefile	/^SOURCES       = documentmap.cpp \\$/;"	m
-STRIP	Makefile	/^STRIP         = strip$/;"	m
-SYMLINK	Makefile	/^SYMLINK       = ln -f -s$/;"	m
-TAR	Makefile	/^TAR           = tar -cf$/;"	m
-TARGET	Makefile	/^TARGET        = editor$/;"	m
 TEXTEDIT_H	textedit.h	2;"	d
 TabList	tablist.h	/^class TabList :public QWidget$/;"	c
 TextEdit	textedit.cpp	/^TextEdit::TextEdit(QWidget *parent)$/;"	f	class:TextEdit

@@ -22,6 +22,7 @@ void FuncationList::editItem()
 	if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
 		return ;	
 	QTextStream out(&file);
+	out.readLine(6);
 	while(!out.atEnd())
 	{
 	QString item=out.readLine();

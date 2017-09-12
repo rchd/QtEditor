@@ -25,7 +25,7 @@ public:
 	void createToolBar();
 	void setActionEnabled(bool flag);
 	TextEdit * getCurrentWidget();
-	void setDocumentMapText(const QString &);
+
 	void open(const QString &);
 public slots:
 	void openFile();
@@ -45,6 +45,7 @@ public slots:
 	void zoomIn();
 	void zoomOut();
 	void showExplorer();
+	void setDocumentMapText();
 protected:
 	void closeEvent(QCloseEvent *event);
 private:

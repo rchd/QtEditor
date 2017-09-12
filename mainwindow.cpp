@@ -13,6 +13,7 @@
 #include<QMenu>
 #include<QAction>
 #include<QFileDialog>
+#include<QFileInfo>
 #include<QTabWidget>
 #include<QStatusBar>
 #include<QListWidgetItem>
@@ -26,6 +27,7 @@
 #include<QSplitter>
 #include<QSettings>
 #include<QLabel>
+#include<QDir>
 
 #include<qtermwidget5/qtermwidget.h>
 
@@ -53,8 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
 	leftDock=new QDockWidget;
 	leftDock->setWindowTitle("Explorer");
 	leftDock->setWidget(explorer);
-addDockWidget(Qt::LeftDockWidgetArea,leftDock);
-leftDock->hide();
+	addDockWidget(Qt::LeftDockWidgetArea,leftDock);
 	splitter=new QSplitter;
 	splitter->addWidget(CentralTabWidget);
 	setCentralWidget(splitter);
@@ -80,8 +81,9 @@ leftDock->hide();
 
 	readSettings();
 
-	//DocumentInfo *a=new DocumentInfo();
-	//statusBar()->addPermanentWidget(a);
+	DocumentInfo *a=new DocumentInfo();
+	
+	statusBar()->addPermanentWidget(a);
 
 }
 /*void MainWindow::newSplitter()
@@ -94,9 +96,10 @@ leftDock->hide();
 	connect(CentralTabWidget,SIGNAL(tabCloseRequested(int)),this,
 	SLOT(closeTab()));
 }*/
-void MainWindow::setDocumentMapText(const QString & text)
+void MainWindow::setDocumentMapText()
 {
-	documentMap->setText(text);
+	TextEdit* a=getCurrentWidget();
+	documentMap->setText(a->text());
 }
 void MainWindow::replace()
 {
@@ -254,9 +257,11 @@ void MainWindow::createConnection()
 
 	connect(CentralTabWidget,SIGNAL(tabCloseRequested(int)),this,
 	SLOT(closeTab()));
-	QListWidget *widget=explorer->getListWidget();
-	connect(widget,SIGNAL(itemDoubleClicked(QListWidgetItem *)),
+	QListView *widget=explorer->getListWidget();
+	connect(widget,SIGNAL(doubleClicked(const QModelIndex &)),
 	this,SLOT(listWidgetOpenFile()));
+
+	connect(CentralTabWidget,SIGNAL(currentChanged(int)),this,SLOT(setDocumentMapText()));
 }
 void MainWindow::cut()
 {
@@ -314,7 +319,9 @@ void MainWindow::showExplorer()
 }
 void MainWindow::openFile()
 {
-	QString fileName=QFileDialog::getOpenFileName(this);
+	QString filePath=QFileDialog::getOpenFileName(this);
+	QFileInfo file(filePath);
+	QString fileName=file.fileName();
 	if(!fileName.isEmpty())
 	{
 		open(fileName);
@@ -331,20 +338,22 @@ void MainWindow::open(const QString &fileName)
 		statusBar()->showMessage(tr("Ready"));
 		setActionEnabled(true);
 		CentralTabWidget->setCurrentIndex(tabCount);
-				setWindowTitle(fileName);
+		QDir currentDir(QDir::currentPath());
+		setWindowTitle(currentDir.absoluteFilePath(fileName));
 }
 void MainWindow::listWidgetOpenFile()
 {
-	QListWidgetItem *currentItem=explorer->currentListWidgetItem();
-	QString fileName=currentItem->text();
+	QString fileName=explorer->currentListWidgetItem();
+	//qDebug()<<currentItem;
 	if(!QFileInfo(fileName).isDir())
 	{
 		open(fileName);
 		documentMap->setEditorScrollBar(editor->verticalScrollBar());
-		setDocumentMapText(editor->text());
+		setDocumentMapText();
 		editor->setCursorPosition(0,0);
-
+		CentralTabWidget->setCurrentIndex(tabCount);
 	}
+
 
 }
 void MainWindow::saveAllFile()

@@ -14,20 +14,21 @@ public:
     {
         tabWidthLabel=new QLabel(tr("Spaces:"));
         posLabel=new QLabel(tr("Ln 0,Col 0"));
-        QHBoxLayout mainLayout;
-        mainLayout.addWidget(tabWidthLabel);
-        mainLayout.addWidget(posLabel);
+        QHBoxLayout *mainLayout=new QHBoxLayout;
+        mainLayout->addWidget(tabWidthLabel);
+        mainLayout->addWidget(posLabel);
+        setLayout(mainLayout);
     }
     ~DocumentInfo()
     {
 
     }
-    void setTabWidth(int width)
+public slots:
+    void setTextEdit(TextEdit *textedit)
     {
-        tabWidth=width;
-    }
-    void setCursorPos(QPoint point)
-    {
-        pos=point;
+        int line,index;
+        textedit->getCursorPosition(&line,&index);
+        posLabel->setText(QString(Ln %1,Col %2).arg(line).arg(index));
+        
     }
 };
